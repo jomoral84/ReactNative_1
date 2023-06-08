@@ -16,7 +16,7 @@ const TabButton = ({ name, activeTab, onHandleSearchType }) => (
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
   return (
     <View style={styles.container}>
-      <Flatlist
+      <FlatList
         data={tabs}
         renderItem={({ item }) => (
           <TabButton
