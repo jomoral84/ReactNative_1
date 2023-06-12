@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "expo-router"; 
+import { useRouter } from "expo-router";
 import { View, ScrollView, SafeAreaView } from "react-native";
 
 import { COLORS, icons, images, SIZES } from "../constants";
@@ -13,6 +13,7 @@ import { Stack } from "expo-router";
 
 const Home = () => {
   const router = useRouter();
+  const [serchTerm, setSearchTerm] = useState("");
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -32,7 +33,15 @@ const Home = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: SIZES.medium }}>
-          <Welcome />
+          <Welcome
+            searchTerm={serchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              if (serchTerm) {
+                router.push(`/search/${serchTerm}`);
+              }
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>
